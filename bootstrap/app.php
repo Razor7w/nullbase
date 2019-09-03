@@ -1,6 +1,6 @@
 <?php
 //Deshabilitar los warnings de php
-error_reporting(0);
+//error_reporting(0);
 session_start();
 
 require __DIR__ . '/../vendor/autoload.php';
@@ -28,7 +28,7 @@ $container['view'] = function ($container){
 };
 
 $container['HomeController'] = function ($container){
-  return new \App\Controllers\HomeController;
+  return new \App\Controllers\HomeController($container);
 };
 
 require __DIR__ . '/../app/routes.php';
