@@ -55,4 +55,6 @@ $container['validator'] = function ($container){
   return new \App\Validation\Validator;
 };
 
+$app->add(new \App\Middleware\ValidationErrorsMiddleware($container));
+
 require __DIR__ . '/../app/routes.php';
