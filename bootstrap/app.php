@@ -1,6 +1,9 @@
 <?php
 //Deshabilitar los warnings de php
 //error_reporting(0);
+
+use Respect\Validation\Validator as v;
+
 session_start();
 
 require __DIR__ . '/../vendor/autoload.php';
@@ -57,5 +60,7 @@ $container['validator'] = function ($container){
 
 $app->add(new \App\Middleware\ValidationErrorsMiddleware($container));
 $app->add(new \App\Middleware\OldInputMiddleware($container));
+
+v::with('App\\Validation\\Rules\\');
 
 require __DIR__ . '/../app/routes.php';
