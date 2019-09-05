@@ -5,15 +5,15 @@
 <div class="row my-4">
      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
        <div class="card card-signin">
-         <div class="card-header text-center">Sign In</div>
+         <div class="card-header text-center">Change Password</div>
          <div class="card-body">
-           <form action="{{ path_for('auth.signin') }}" method="post" autocomplete="off">
+           <form action="{{ path_for('auth.password.change') }}" method="post" autocomplete="off">
             <div class="form-row">
 
               <div class="col-md-12">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" class="form-control {{ errors.email ? ' is-invalid ' : '' }}"  placeholder="you@domain.com" value="{{ old.email }}">
-                <div class="invalid-feedback"> {{ errors.email | first }}</div>
+                <label for="password_old">Current Password</label>
+                <input type="password" name="password_old" id="password_old" class="form-control {{ errors.password_old ? ' is-invalid ' : '' }}">
+                <div class="invalid-feedback"> {{ errors.password_old | first }}</div>
               </div>
 
               <div class="col-md-12">
@@ -24,7 +24,7 @@
 
             </div>
             <br>
-            <button type="submit" class="btn btn-primary btn-block">Sign In </button>
+            <button type="submit" class="btn btn-primary btn-block">Change Password </button>
 
             {{ csrf.field | raw }}
 

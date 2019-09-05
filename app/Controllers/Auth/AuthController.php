@@ -17,9 +17,9 @@ class AuthController extends Controller{
     return $this->view->render($response, 'auth/signin.twig');
   }
   public function postSignIn($request, $response){
-    
+
     $validation = $this->validator->validate($request, [
-      'email'    => v::noWhitespace()->notEmpty()->email()->emailAvailable(),
+      'email'    => v::noWhitespace()->notEmpty()->email(),
       'password' => v::noWhitespace()->notEmpty(),
     ]);
 
