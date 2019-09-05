@@ -17,12 +17,23 @@ class AuthController extends Controller{
     return $this->view->render($response, 'auth/signin.twig');
   }
   public function postSignIn($request, $response){
+    
+    $validation = $this->validator->validate($request, [
+      'email'    => v::noWhitespace()->notEmpty()->email()->emailAvailable(),
+      'password' => v::noWhitespace()->notEmpty(),
+    ]);
+
+    if($validation->failed()){
+      return $response->withRedirect($this->router->pathFor('auth.signin'));
+    }
+
     $auth = $this->auth->attempt(
       $request->getParam('email'),
       $request->getParam('password')
     );
 
     if (!$auth) {
+      $this->flash->addMessage('error', 'Could not sign you in with those details.');
       return $response->withRedirect($this->router->pathFor('auth.signin'));
     }
 
@@ -50,6 +61,8 @@ class AuthController extends Controller{
       'gl_nick'     => $request->getParam('name'),
       'gl_password' => password_hash($request->getParam('password'), PASSWORD_DEFAULT),
     ]);
+
+    $this->flash->addMessage('info', 'You have been signed up!');
 
     $this->auth->attempt($user->gl_email, $request->getParam('password'));
 

@@ -2,11 +2,10 @@
 
 
 {% block content%}
-<div class="row">
+<div class="row my-4">
      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
        <div class="card card-signin">
          <div class="card-body">
-           <!-- {{ errors | json_encode }} -->
            <h5 class="card-title text-center">Sign In</h5>
            <form action="{{ path_for('auth.signin') }}" method="post" autocomplete="off">
             <div class="form-row">
