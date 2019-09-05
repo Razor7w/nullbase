@@ -14,4 +14,10 @@ class DAOUser extends Model{
     'gl_email',
     'gl_password'
   ];
+
+  public function setPassword($password){
+    $this->update([
+      'gl_password' => password_hash($password, PASSWORD_DEFAULT)
+    ]);
+  }
 }
