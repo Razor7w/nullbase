@@ -7,20 +7,14 @@
        <div class="card card-signin my-5">
          <div class="card-body">
            <!-- {{ errors | json_encode }} -->
-           <h5 class="card-title text-center">Sign Up</h5>
-           <form action="{{ path_for('auth.signup') }}" method="post" autocomplete="off">
+           <h5 class="card-title text-center">Sign In</h5>
+           <form action="{{ path_for('auth.signin') }}" method="post" autocomplete="off">
             <div class="form-row">
 
               <div class="col-md-12">
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" class="form-control {{ errors.email ? ' is-invalid ' : '' }}"  placeholder="you@domain.com" value="{{ old.email }}">
                 <div class="invalid-feedback"> {{ errors.email | first }}</div>
-              </div>
-
-              <div class="col-md-12">
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name" class="form-control {{ errors.name ? ' is-invalid ' : '' }}" value="{{ old.name }}">
-                <div class="invalid-feedback"> {{ errors.name | first }}</div>
               </div>
 
               <div class="col-md-12">
@@ -31,7 +25,7 @@
 
             </div>
             <br>
-            <button type="submit" class="btn btn-primary btn-block">Sign Up </button>
+            <button type="submit" class="btn btn-primary btn-block">Sign In </button>
 
             {{ csrf.field | raw }}
 
