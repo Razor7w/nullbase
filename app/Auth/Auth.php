@@ -6,6 +6,15 @@ use App\Models\DAOUser;
 
 class Auth{
 
+  public function user(){
+    if (isset($_SESSION['user'])) {
+      return DAOUser::find($_SESSION['user']);
+    }
+  }
+  public function check(){
+    return isset($_SESSION['user']);
+  }
+
   public function attempt($email, $password){
 
     $user = DAOUser::where('gl_email', $email)->first();

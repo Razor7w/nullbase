@@ -1,31 +1,34 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="#">Api</a>
+    <a class="navbar-brand" href="{{ path_for('home') }}">Api</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
+          <a class="nav-link" href="{{ path_for('home') }}">Home</a>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
+        {% if auth.check %}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Mabel Garrett
+            {{ auth.user.gl_nick }}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="#">Change Password</a>
             <a class="dropdown-item" href="#">Sign out</a>
           </div>
         </li>
+        {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="#">Sign Up</a>
+          <a class="nav-link" href="{{ path_for('auth.signup') }}">Sign Up</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Sign In</a>
+          <a class="nav-link" href="{{ path_for('auth.signin') }}">Sign In</a>
         </li>
+        {% endif %}
       </ul>
     </div>
   </div>
