@@ -40,12 +40,14 @@ class AuthController extends Controller{
       return $response->withRedirect($this->router->pathFor('auth.signup'));
     }
 
-    DAOUser::create([
+    $user = DAOUser::create([
       'gl_email'    => $request->getParam('email'),
       'gl_nick'     => $request->getParam('name'),
       'gl_password' => password_hash($request->getParam('password'), PASSWORD_DEFAULT),
     ]);
 
-      return $response->withRedirect($this->router->pathFor('home'));
+    $this->auth->attempt($user->gl_email, $request->getParam('password'));
+
+    return $response->withRedirect($this->router->pathFor('home'));
   }
 }
