@@ -7,3 +7,13 @@ Ya que en el .gitignore se ignora la carpeta  **vendor**, una vez se **clona** e
 ~~~
 $ composer install
 ~~~
+
+## Versión del sitio
+
+En esta sección se describirá los cambios que se realizarán en esta branch.
+
+|Versión | Descripción   | Características  |    Fecha   |
+|:------:|:-------------:|:----------------:|:----------:|
+|  1.0.0 | Es la versión estable de nullbase, con todas las Características para hacer un login en PHP.| ~ | 06/09/2019 |
+|        |               |                  |            |
+|        |               |                  |            |
