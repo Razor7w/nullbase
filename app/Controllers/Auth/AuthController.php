@@ -24,7 +24,7 @@ class AuthController extends Controller{
     ]);
 
     if($validation->failed()){
-      return $response->withRedirect($this->router->pathFor('auth.signin'));
+      return $response->withRedirect($this->router->pathFor('home'));
     }
 
     $auth = $this->auth->attempt(
@@ -33,11 +33,13 @@ class AuthController extends Controller{
     );
 
     if (!$auth) {
-      $this->flash->addMessage('error', 'Could not sign you in with those details.');
-      return $response->withRedirect($this->router->pathFor('auth.signin'));
+      $this->flash->addMessage('error', 'No se pudo iniciar sesión con esos detalles.');
+      return $response->withRedirect($this->router->pathFor('home'));
     }
 
-    return $response->withRedirect($this->router->pathFor('home'));
+    var_dump("Ok");
+    die();
+    //return $response->withRedirect($this->router->pathFor('home'));
   }
 
   public function getSignUp($request, $response){
