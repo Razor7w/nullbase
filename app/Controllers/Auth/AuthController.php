@@ -8,6 +8,9 @@ use Respect\Validation\Validator as v;
 
 class AuthController extends Controller{
 
+  public function getDashboard($request, $response){
+    return $this->view->render($response, 'templates/dashboard.twig');
+  }
   public function getSignOut($request, $response){
     $this->auth->logout();
     return $response->withRedirect($this->router->pathFor('home'));
@@ -37,9 +40,7 @@ class AuthController extends Controller{
       return $response->withRedirect($this->router->pathFor('home'));
     }
 
-    var_dump("Ok");
-    die();
-    //return $response->withRedirect($this->router->pathFor('home'));
+    return $response->withRedirect($this->router->pathFor('dashboard'));
   }
 
   public function getSignUp($request, $response){
