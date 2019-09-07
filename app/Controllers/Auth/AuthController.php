@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 class AuthController extends Controller{
 
   public function getDashboard($request, $response){
-    return $this->view->render($response, 'templates/dashboard.twig');
+    return $this->view->render($response, 'templates/dashboard.html');
   }
   public function getSignOut($request, $response){
     $this->auth->logout();
