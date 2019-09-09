@@ -30,7 +30,8 @@ class AuthController extends Controller{
 
     if($validation->failed()){
       // TODO: Mostrar mensajes de los errores
-      $salida = array("correcto" => false,  "errorEmail" => $_SESSION['errors']['email'][0], "errorPassword" => $_SESSION['errors']['password'][0]);
+      $salida = array("correcto" => false,  "errorEmail"    => isset($_SESSION['errors']['email'][0]) ? $_SESSION['errors']['email'][0] : "" ,
+                                            "errorPassword" => isset($_SESSION['errors']['password'][0]) ? $_SESSION['errors']['password'][0] : ""  );
       //return $response->withRedirect($this->router->pathFor('home'));
     }else{
       $auth = $this->auth->attempt(

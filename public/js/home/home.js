@@ -13,6 +13,12 @@ Home = {
       if (!email){
         mensaje+= '- Debe Ingresar el Email. <br>';
         errorEmail = 'Debe Ingresar el Email.';
+      }else if(Base.noWhitespace(email)){
+        mensaje+= '- El campo Email no debe contener espacios en blanco. <br>';
+        errorEmail = 'El campo Email no debe contener espacios en blanco.';
+      }else if(!Base.validarEmail(email)){
+        mensaje+= '- Error en el formato del Email. <br>';
+        errorEmail = 'Error en el formato del Email.';
       }else{errorEmail = "";}
       if (!password){
         mensaje+= '- Debe Ingresar la contraseña. <br>';
@@ -35,6 +41,7 @@ Home = {
               title: 'Error',
               message: "Problemas con el servidor, contacte a soporte.",
             });
+            Base.buttonProccessEnd(btn);
           },
           success: function (data) {
 

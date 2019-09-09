@@ -29,5 +29,31 @@ var Base = {
           var base_uri = protocol + "//" + host ;
       }
       return base_uri;
-  }
+  },
+  /**
+   * Validar formato de email
+   * @param email
+   * @returns {boolean}
+   */
+  validarEmail : function(email){
+      if(email === "")
+          return false;
+
+      var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+      return regex.test(email) ? true : false;
+  },
+  /**
+   * Validar string sin espacios en blanco
+   * @param string
+   * @returns {boolean}
+   */
+   noWhitespace: function (string){
+
+     if (string === "")
+       return false;
+
+     var regex = /\s/;
+     return regex.test(string) ? true : false;
+
+   }
 }
