@@ -21,26 +21,32 @@ class AuthController extends Controller{
   }
   public function postSignIn($request, $response){
 
+    $salida = array("correcto" => true, $_SESSION);
+
     $validation = $this->validator->validate($request, [
       'email'    => v::noWhitespace()->notEmpty()->email(),
       'password' => v::noWhitespace()->notEmpty(),
     ]);
 
     if($validation->failed()){
-      return $response->withRedirect($this->router->pathFor('home'));
+      // TODO: Mostrar mensajes de los errores
+      $salida = array("correcto" => false,  "errorEmail" => $_SESSION['errors']['email'][0], "errorPassword" => $_SESSION['errors']['password'][0]);
+      //return $response->withRedirect($this->router->pathFor('home'));
+    }else{
+      $auth = $this->auth->attempt(
+        $request->getParam('email'),
+        $request->getParam('password')
+      );
+
+      if (!$auth) {
+        //$this->flash->addMessage('error', 'No se pudo iniciar sesión con esos detalles.');
+        $salida = array("correcto" => false, "mensaje" => 'No se pudo iniciar sesión con esos detalles.');
+        //return $response->withRedirect($this->router->pathFor('home'));
+      }
     }
 
-    $auth = $this->auth->attempt(
-      $request->getParam('email'),
-      $request->getParam('password')
-    );
-
-    if (!$auth) {
-      $this->flash->addMessage('error', 'No se pudo iniciar sesión con esos detalles.');
-      return $response->withRedirect($this->router->pathFor('home'));
-    }
-
-    return $response->withRedirect($this->router->pathFor('dashboard'));
+    echo json_encode($salida, JSON_UNESCAPED_UNICODE);
+    //return $response->withRedirect($this->router->pathFor('dashboard'));
   }
 
   public function getSignUp($request, $response){

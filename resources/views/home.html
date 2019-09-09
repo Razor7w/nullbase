@@ -4,7 +4,7 @@
 {% block content%}
 <!-- Outer Row -->
 <div class="container">
-  {% include 'templates/partials/flash.twig' %}
+  <!-- {% include 'templates/partials/flash.twig' %} -->
   <div class="row justify-content-center">
 
   <div class="col-xl-10 col-lg-12 col-md-9">
@@ -20,27 +20,26 @@
                 <h1 class="h4 text-gray-900 mb-4">Bienvenido SPV ~ Toast</h1>
               </div>
 
-              <form action="{{ path_for('auth.signin') }}" method="post" autocomplete="off" class="user">
+              <!-- <form action="{{ path_for('auth.signin') }}" method="post" autocomplete="off" class="user"> -->
+
 
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-user {{ errors.email ? ' is-invalid ' : '' }}" name="email" id="email" aria-describedby="emailHelp" placeholder="Ingresa tu Email" value="{{ old.email }}">
-                  <div class="invalid-feedback"> {{ errors.email | first }}</div>
+                  <input type="email" class="form-control form-control-user {{ errors.email ? ' is-invalid ' : '' }}" name="email" id="email" aria-describedby="emailHelp" placeholder="Ingresa tu Email">
+                  <span class="invalid-feedback" id="errorEmail"> {{ errors.email | first }}</span>
                 </div>
                 <div class="form-group">
                   <input type="password" class="form-control form-control-user {{ errors.password ? ' is-invalid ' : '' }}" name="password" id="password" placeholder="Contraseña">
-                  <div class="invalid-feedback"> {{ errors.password | first }}</div>
+                  <div class="invalid-feedback" id="errorPassword"> {{ errors.password | first }}</div>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-user btn-block">Iniciar Sesión</button>
+                <button type="button" class="btn btn-primary btn-user btn-block" onClick="Home.iniciarSesion(this);">Iniciar Sesión</button>
 
-                {{ csrf.field | raw }}
+                <!-- {{ csrf.field | raw }} -->
 
-              </form>
+
               <hr>
               <div class="text-center">
                 <a class="small" href="#">¿Olvidaste tu contraseña?</a>
-              </div>
-              <div class="text-center">
               </div>
             </div>
           </div>

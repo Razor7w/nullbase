@@ -71,9 +71,9 @@ $container['PasswordController'] = function ($container){
 $container['validator'] = function ($container){
   return new \App\Validation\Validator;
 };
-$container['csrf'] = function ($container){
-  return new \Slim\Csrf\Guard;
-};
+// $container['csrf'] = function ($container){
+//   return new \Slim\Csrf\Guard;
+// };
 
 //Libs//
 $container['load'] = function ($container){
@@ -84,9 +84,9 @@ $container['uri'] = function ($container){
 };
 
 $app->add(new \App\Middleware\ValidationErrorsMiddleware($container));
-$app->add(new \App\Middleware\OldInputMiddleware($container));
-$app->add(new \App\Middleware\CsrfViewMiddleware($container));
-$app->add($container->csrf);
+//$app->add(new \App\Middleware\OldInputMiddleware($container));
+//$app->add(new \App\Middleware\CsrfViewMiddleware($container));
+//$app->add($container->csrf);
 
 v::with('App\\Validation\\Rules\\');
 

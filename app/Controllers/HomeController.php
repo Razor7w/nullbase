@@ -8,7 +8,7 @@ class HomeController extends Controller{
 
   public function index($request, $response){
 
-    $this->load->addJS("home/app2.js");
+    $this->load->addJS("home/home.js");
 
     if(auth::check()){
         return $response->withRedirect($this->router->pathFor('dashboard'));
