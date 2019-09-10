@@ -3,7 +3,7 @@
 use App\Middleware\AuthMiddleware;
 use App\Middleware\GuestMiddleware;
 
-$app->get('/', 'HomeController:index')->setname('home');
+$app->get('/', 'LoginController:index')->setname('home');
 //$app->get('/auth/signin', 'AuthController:getSignIn');
 $app->post('/auth/signin', 'AuthController:postSignIn')->setName('auth.signin');
 
@@ -21,4 +21,5 @@ $app->group('', function(){
   $this->get('/dashboard', 'DashboardController:getDashboard')->setName('dashboard');
   $this->get('/dashboard/MantenedorUsuarios', 'DashboardController:getMantenedorUsuarios')->setName('mantenedorUsuarios');
   $this->get('/dashboard/MantenedorProductos', 'DashboardController:getMantenedorProductos')->setName('mantenedorProductos');
+  $this->get('/dashboard/Perfil', 'DashboardController:getPerfil')->setName('perfil');
 })->add(new AuthMiddleware($container));

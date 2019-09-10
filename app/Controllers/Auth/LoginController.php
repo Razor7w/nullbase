@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Controllers;
-
+namespace App\Controllers\Auth;
+use App\Controllers\Controller;
 use App\Auth\Auth as auth;
 
-class HomeController extends Controller{
+class LoginController extends Controller{
 
   public function index($request, $response){
 

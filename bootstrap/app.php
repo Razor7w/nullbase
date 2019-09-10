@@ -59,14 +59,14 @@ $container['view'] = function ($container){
 
     return $view;
 };
-$container['HomeController'] = function ($container){
-  return new \App\Controllers\HomeController($container);
+$container['LoginController'] = function ($container){
+  return new \App\Controllers\Auth\LoginController($container);
 };
 $container['AuthController'] = function ($container){
   return new \App\Controllers\Auth\AuthController($container);
 };
 $container['DashboardController'] = function ($container){
-  return new \App\Controllers\Dashboard\DashboardController($container);
+  return new \App\Controllers\Home\DashboardController($container);
 };
 $container['PasswordController'] = function ($container){
   return new \App\Controllers\Auth\PasswordController($container);
