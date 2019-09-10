@@ -22,7 +22,7 @@ Home = {
       }else{errorEmail = "";}
       if (!password){
         mensaje+= '- Debe Ingresar la contraseña. <br>';
-        errorPassword= 'Debe Ingresar la contraseña';
+        errorPassword= 'Debe Ingresar la contraseña.';
       }else{ errorPassword = "";}
     }
 

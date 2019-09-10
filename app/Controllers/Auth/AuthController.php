@@ -68,7 +68,7 @@ class AuthController extends Controller{
 
     $user = DAOUser::create([
       'gl_email'    => $request->getParam('email'),
-      'gl_nick'     => $request->getParam('name'),
+      'gl_nombre'     => $request->getParam('name'),
       'gl_password' => password_hash($request->getParam('password'), PASSWORD_DEFAULT),
     ]);
 

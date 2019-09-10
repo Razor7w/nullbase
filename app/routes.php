@@ -18,5 +18,7 @@ $app->group('', function(){
   $this->get('/auth/password/change', 'PasswordController:getChangePassword')->setName('auth.password.change');
   $this->post('/auth/password/change', 'PasswordController:postChangePassword');
 
-  $this->get('/dashboard', 'AuthController:getDashboard')->setName('dashboard');
+  $this->get('/dashboard', 'DashboardController:getDashboard')->setName('dashboard');
+  $this->get('/dashboard/MantenedorUsuarios', 'DashboardController:getMantenedorUsuarios')->setName('mantenedorUsuarios');
+  $this->get('/dashboard/MantenedorProductos', 'DashboardController:getMantenedorProductos')->setName('mantenedorProductos');
 })->add(new AuthMiddleware($container));
