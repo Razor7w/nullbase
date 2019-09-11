@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class DAOUser extends Model{
-  protected $table = 'user';
+  protected $table = 'usuario';
 
   protected $fillable = [
     'gl_nombre',

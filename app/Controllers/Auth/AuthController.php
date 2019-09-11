@@ -8,9 +8,6 @@ use Respect\Validation\Validator as v;
 
 class AuthController extends Controller{
 
-  public function getDashboard($request, $response){
-    return $this->view->render($response, 'templates/dashboard.html');
-  }
   public function getSignOut($request, $response){
     $this->auth->logout();
     return $response->withRedirect($this->router->pathFor('home'));
@@ -29,7 +26,6 @@ class AuthController extends Controller{
     ]);
 
     if($validation->failed()){
-      // TODO: Mostrar mensajes de los errores
       $salida = array("correcto" => false,  "errorEmail"    => isset($_SESSION['errors']['email'][0]) ? $_SESSION['errors']['email'][0] : "" ,
                                             "errorPassword" => isset($_SESSION['errors']['password'][0]) ? $_SESSION['errors']['password'][0] : ""  );
       //return $response->withRedirect($this->router->pathFor('home'));
@@ -40,12 +36,11 @@ class AuthController extends Controller{
       );
 
       if (!$auth) {
-        //$this->flash->addMessage('error', 'No se pudo iniciar sesión con esos detalles.');
         $salida = array("correcto" => false, "mensaje" => 'No se pudo iniciar sesión con esos detalles.');
         //return $response->withRedirect($this->router->pathFor('home'));
       }
     }
-
+    file_put_contents('php://stderr', PHP_EOL . print_r($_SESSION, TRUE). PHP_EOL, FILE_APPEND);
     echo json_encode($salida, JSON_UNESCAPED_UNICODE);
     //return $response->withRedirect($this->router->pathFor('dashboard'));
   }
@@ -72,7 +67,7 @@ class AuthController extends Controller{
       'gl_password' => password_hash($request->getParam('password'), PASSWORD_DEFAULT),
     ]);
 
-    $this->flash->addMessage('info', 'You have been signed up!');
+    //$this->flash->addMessage('info', 'You have been signed up!');
 
     $this->auth->attempt($user->gl_email, $request->getParam('password'));
 
