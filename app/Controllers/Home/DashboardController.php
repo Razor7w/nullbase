@@ -11,6 +11,7 @@ class DashboardController extends Controller{
     return $this->view->render($response, 'templates/panel/dashboard.html');
   }
   public function getMantenedorUsuarios($request, $response){
+    $this->load->addJS("home/mantenedorUsuarios.js");
     return $this->view->render($response, 'templates/panel/mantenedorUsuarios.html');
   }
   public function getMantenedorProductos($request, $response){

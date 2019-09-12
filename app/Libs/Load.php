@@ -73,7 +73,7 @@ class Load{
               //     self::$js_code .= "\n" . '<script type="text/javascript" charset="' . App::getCharset() . '">' . "\n" . 'console.error("Archivo '.$javascript.' no se ha cargado");'. "\n" . '</script>' . "\n";
               // }
           }else{
-              $base_url = uri::url();
+              $base_url = uri::getHost();
               $path_url = $base_url . "public/js/" . $javascript;
               $path = "public/js/" . $javascript;
               if (file_exists($path)) {
