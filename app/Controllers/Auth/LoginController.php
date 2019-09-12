@@ -10,7 +10,8 @@ class LoginController extends Controller{
 
     $this->load->addJS("home/home.js");
 
-    if(auth::check()){
+
+    if($this->auth->check()){
         return $response->withRedirect($this->router->pathFor('dashboard'));
     }
 

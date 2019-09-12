@@ -4,8 +4,9 @@ namespace App\Validation;
 
 use Respect\Validation\Validator as Respect;
 use Respect\Validation\Exceptions\NestedValidationException;
+use App\Controllers\Controller;
 
-class Validator{
+class Validator extends Controller{
   protected $errors;
   public function Validate($request, array $rules){
 
@@ -17,7 +18,10 @@ class Validator{
       }
     }
 
-    $_SESSION['errors'] = $this->errors;
+    if ($this->errors) {
+      $this->session->setSession('errors', $this->errors);
+    }
+
     return $this;
   }
 

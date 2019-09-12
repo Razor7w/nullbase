@@ -26,8 +26,9 @@ class AuthController extends Controller{
     ]);
 
     if($validation->failed()){
-      $salida = array("correcto" => false,  "errorEmail"    => isset($_SESSION['errors']['email'][0]) ? $_SESSION['errors']['email'][0] : "" ,
-                                            "errorPassword" => isset($_SESSION['errors']['password'][0]) ? $_SESSION['errors']['password'][0] : ""  );
+      $errors = $this->session->getSession('errors');
+      $salida = array("correcto" => false,  "errorEmail"    => isset($errors['email'][0]) ? $errors['email'][0] : "" ,
+                                            "errorPassword" => isset($errors['password'][0]) ? $errors['password'][0] : ""  );
       //return $response->withRedirect($this->router->pathFor('home'));
     }else{
       $auth = $this->auth->attempt(
