@@ -18,8 +18,14 @@ $app->group('', function(){
   $this->get('/auth/password/change', 'PasswordController:getChangePassword')->setName('auth.password.change');
   $this->post('/auth/password/change', 'PasswordController:postChangePassword');
 
-  $this->get('/dashboard', 'DashboardController:getDashboard')->setName('dashboard');
-  $this->get('/dashboard/MantenedorUsuarios', 'DashboardController:getMantenedorUsuarios')->setName('mantenedorUsuarios');
-  $this->get('/dashboard/MantenedorProductos', 'DashboardController:getMantenedorProductos')->setName('mantenedorProductos');
-  $this->get('/dashboard/Perfil', 'DashboardController:getPerfil')->setName('perfil');
+  $this->get('/Dashboard', 'DashboardController:getDashboard')->setName('dashboard');
+  $this->get('/Dashboard/MantenedorProductos', 'DashboardController:getMantenedorProductos')->setName('mantenedorProductos');
+  $this->get('/Dashboard/Perfil', 'DashboardController:getPerfil')->setName('perfil');
+
+
+  //Mantenedor Usuarios
+  $this->get('/Dashboard/MantenedorUsuarios', 'DashboardController:getMantenedorUsuarios')->setName('mantenedorUsuarios');
+  $this->get('/Dashboard/MantenedorUsuarios/Agregar', 'DashboardController:getAgregarUsuarios')->setName('agregarUsuarios');
+  $this->get('/Dashboard/MantenedorUsuarios/Info', 'DashboardController:getInfoUsuarios')->setName('infoUsuarios');
+  $this->get('/Dashboard/MantenedorUsuarios/Editar', 'DashboardController:getEditarUsuarios')->setName('editarUsuarios');
 })->add(new AuthMiddleware($container));

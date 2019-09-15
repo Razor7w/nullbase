@@ -46,8 +46,7 @@ Home = {
           success: function (data) {
 
               if (data.correcto) {
-                location.href = Base.getBaseUri() + "dashboard";
-
+                location.href = Base.getBaseUri() + "Dashboard";
               }else{
                 Home.errorsCamposLogin(data.errorEmail,data.errorPassword,data.mensaje);
                 Base.buttonProccessEnd(btn);

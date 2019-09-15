@@ -30,7 +30,7 @@ class Auth extends Controller{
     }
 
     if (password_verify($password, $user[0]->gl_password)) {
-      file_put_contents('php://stderr', PHP_EOL . print_r($user, TRUE). PHP_EOL, FILE_APPEND);
+      //file_put_contents('php://stderr', PHP_EOL . print_r($user, TRUE). PHP_EOL, FILE_APPEND);
       $this->session->setSession('id_usuario', $user[0]->id);
       $this->session->setSession('gl_nombre', $user[0]->gl_nombre);
       $this->session->setSession('id_perfil', $user[0]->id_perfil);

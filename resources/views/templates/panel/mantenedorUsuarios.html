@@ -4,7 +4,7 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
   <h1 class="h3 mb-0 text-gray-800">Mantenedor Usuarios</h1>
-  <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar Usuario</a>
+  <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" onclick="xModal.open('MantenedorUsuarios/Agregar', 'Agregar Usuario', 'lg');"><i class="fas fa-plus-circle fa-sm text-white-50"></i> Agregar Usuario</a>
 </div>
 
 <!-- DataTales Example -->
@@ -18,7 +18,6 @@
         <thead>
           <tr>
             <th>Nombre</th>
-            <th>Perfil</th>
             <th>Correo</th>
             <th>Opciones</th>
           </tr>
@@ -26,32 +25,33 @@
         <tfoot>
           <tr>
             <th>Nombre</th>
-            <th>Perfil</th>
             <th>Correo</th>
             <th>Opciones</th>
           </tr>
         </tfoot>
         <tbody>
+          <!-- -->
+          {% for array in arrays %}
           <tr>
-            <td>Sebastian Carroza</td>
-            <td>Administrador</td>
-            <td>seba.carroza@gmail.com</td>
+            <td> {{ array.gl_nombre|e }} </td>
+            <td> {{ array.gl_email|e }}</td>
             <td>
-              <a href="#" class="btn btn-info btn-circle btn-sm">
+              <a href="#" class="btn btn-info btn-circle btn-sm" onclick="xModal.open('MantenedorUsuarios/Info?id={{array.id}}', 'Info Usuario', 'lg');">
                     <i class="fas fa-info-circle"></i>
               </a>
-              <a href="#" class="btn btn-success btn-circle btn-sm">
+              <a href="#" class="btn btn-success btn-circle btn-sm" onclick="xModal.open('MantenedorUsuarios/Editar?id={{array.id}}', 'Editar Usuario', 'lg');">
                     <i class="fas fa-pencil-alt"></i>
               </a>
-              <a href="#" class="btn btn-danger btn-circle btn-sm">
+              <a href="#" class="btn btn-danger btn-circle btn-sm" onclick="MantenedorUsuarios.eliminar();">
                     <i class="fas fa-trash"></i>
               </a>
             </td>
           </tr>
+          {% endfor %}
+          <!-- -->
         </tbody>
       </table>
     </div>
   </div>
 </div>
-
 {% endblock%}
