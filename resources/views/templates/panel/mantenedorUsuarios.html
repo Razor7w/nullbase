@@ -36,15 +36,20 @@
             <td> {{ array.gl_nombre|e }} </td>
             <td> {{ array.gl_email|e }}</td>
             <td>
-              <a href="#" class="btn btn-info btn-circle btn-sm" onclick="xModal.open('MantenedorUsuarios/Info?id={{array.id}}', 'Info Usuario', 'lg');">
-                    <i class="fas fa-info-circle"></i>
-              </a>
-              <a href="#" class="btn btn-success btn-circle btn-sm" onclick="xModal.open('MantenedorUsuarios/Editar?id={{array.id}}', 'Editar Usuario', 'lg');">
-                    <i class="fas fa-pencil-alt"></i>
-              </a>
-              <a href="#" class="btn btn-danger btn-circle btn-sm" onclick="MantenedorUsuarios.eliminar();">
-                    <i class="fas fa-trash"></i>
-              </a>
+              <button type="button" rel="tooltip" title="Info Usuario" class="btn btn-info btn-circle btn-sm"
+                onclick="xModal.open('MantenedorUsuarios/Info?id={{array.id}}', 'Info Usuario', 'lg');">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <button type="button" rel="tooltip" title="Editar Usuario" class="btn btn-success btn-circle btn-sm"
+                onclick="xModal.open('MantenedorUsuarios/Editar?id={{array.id}}', 'Editar Usuario', 'lg');">
+                <i class="fas fa-pencil-alt"></i>
+              </button>
+              {% if (array.id == id_usuario) == false  %}
+              <button type="button" rel="tooltip" title="Eliminar Usuario" class="btn btn-danger btn-circle btn-sm"
+                onclick="MantenedorUsuarios.eliminar({{array.id}});">
+                <i class="fas fa-trash"></i>
+              </button>
+              {% endif %}
             </td>
           </tr>
           {% endfor %}
