@@ -26,7 +26,7 @@ $app->group('', function(){
   //Mantenedor Usuarios
   $this->get('/Dashboard/MantenedorUsuarios', 'UsuarioController:index')->setName('mantenedorUsuarios');
   $this->get('/Dashboard/MantenedorUsuarios/Agregar', 'UsuarioController:create')->setName('agregarUsuarios');
-  $this->post('/Dashboard/MantenedorUsuarios/', 'UsuarioController:store');
+  $this->post('/Dashboard/MantenedorUsuarios', 'UsuarioController:store');
   $this->delete('/Dashboard/MantenedorUsuarios', 'UsuarioController:delete');
 
   $this->get('/Dashboard/MantenedorUsuarios/Info', 'DashboardController:getInfoUsuarios')->setName('infoUsuarios');

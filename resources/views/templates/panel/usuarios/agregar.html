@@ -9,24 +9,28 @@
       <input type="email" class="form-control" id="gl_email" placeholder="Email">
     </div>
     <div class="form-group col-md-6">
-      <label for="inputPassword4">Password</label>
-      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+      <label for="gl_password">Contraseña</label>
+      <input type="password" class="form-control" id="gl_password" placeholder="Contraseña">
     </div>
     <div class="form-group col-md-6">
-      <label for="inputState">Tipo de Usuario</label>
-      <select id="inputState" class="form-control">
-        <option selected>Elige un Tipo de Usuario...</option>
-        <option>...</option>
+      <label for="gl_tipo_usuario">Perfil</label>
+      <select id="gl_tipo_usuario" class="form-control">
+        <option value="0">Elige un Perfil...</option>
+        {% for perfil in perfiles %}
+        <option value="{{ perfil.id_perfil }}">{{perfil.gl_nombre_perfil}}</option>
+        {% endfor %}
       </select>
     </div>
     <div class="form-group col-md-6">
-      <label for="inputState">Locales</label>
-      <select id="inputState" class="form-control">
-        <option selected>Elige un local...</option>
-        <option>...</option>
+      <label for="gl_locales">Locales</label>
+      <select id="gl_locales" class="form-control">
+        <option value="0">Elige un local...</option>
+        {% for local in locales %}
+        <option value="{{ local.id }}">{{ local.gl_nombre_local}}</option>
+        {% endfor %}
       </select>
     </div>
   </div>
 
-  <button type="submit" class="btn btn-primary float-right">Agregar Usuario</button>
+  <button type="button" class="btn btn-primary float-right" onclick="MantenedorUsuarios.agregar(this);">Agregar Usuario</button>
 </form>

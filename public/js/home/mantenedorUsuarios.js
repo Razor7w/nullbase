@@ -65,6 +65,54 @@ MantenedorUsuarios = {
         //console.info('Closed | closedBy: ' + closedBy);
     }
   });
+  },
+  agregar : function (btn){
+    //console.log('entre al agregar');
+    //Base.buttonProccessStart(btn);
+    var nombre        = $("#gl_nombre").val();
+    var email         = $("#gl_email").val();
+    var password      = $("#gl_password").val();
+    var tipo_usuario  = $('#gl_tipo_usuario option:selected' ).val();
+    var local         = $('#gl_locales option:selected' ).val();
+
+    // console.log('Nombre: '+nombre);
+    // console.log('Email: ' +email);
+    // console.log('password: ' +password);
+    // console.log('Tipo Usuario: ' +tipo_usuario);
+    // console.log('Local: ' +local);
+
+    $.ajax({
+        dataType: "json",
+        cache: false,
+        async: true,
+        data: {nombre: nombre,
+               email : email,
+               password: password,
+               tipo_usuario:tipo_usuario,
+               local:local
+              },
+        type: "POST",
+        url:  Base.getBaseUri(),
+        error: function (xhr, textStatus, errorThrown) {
+          iziToast.error({
+            title: 'Error',
+            message: "Problemas con el servidor, contacte a soporte.",
+          });
+        },
+        success: function (data) {
+            if (data.correcto){
+              location.href = Base.getBaseUri();
+            }else{
+              xModal.close();
+              iziToast.error({
+                title: 'Error',
+                message: "No se pudo guardar Usuario.",
+              });
+            }
+
+        }
+    });
+
   }
 
 

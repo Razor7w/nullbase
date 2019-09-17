@@ -39,6 +39,7 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
         </li>
+        {% if auth.idPerfil == 1 %}
         <!-- Modulos de Administración -->
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -61,6 +62,7 @@
             </div>
           </div>
         </li>
+        {% endif %}
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
@@ -86,6 +88,10 @@
               <i class="fa fa-bars"></i>
             </button>
 
+            <div class="d-sm-flex align-items-center justify-content-between">
+              <h1 class="h3 mb-0 text-gray-800">{{ auth.nombrePerfil }}</h1>
+            </div>
+
             <!-- Topbar Search
             <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
               <div class="input-group">
@@ -101,12 +107,12 @@
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
 
-              <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+              <!-- Nav Item - Search Dropdown (Visible Only XS)
               <li class="nav-item dropdown no-arrow d-sm-none">
                 <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fas fa-search fa-fw"></i>
                 </a>
-                <!-- Dropdown - Messages -->
+                 Dropdown - Messages
                 <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                   <form class="form-inline mr-auto w-100 navbar-search">
                     <div class="input-group">
@@ -119,7 +125,7 @@
                     </div>
                   </form>
                 </div>
-              </li>
+              </li> -->
 
               <!-- Nav Item - Alerts
               <li class="nav-item dropdown no-arrow mx-1">

@@ -36,12 +36,13 @@ class AuthController extends Controller{
         $request->getParam('password')
       );
 
+
       if (!$auth) {
         $salida = array("correcto" => false, "mensaje" => 'No se pudo iniciar sesión con esos detalles.');
         //return $response->withRedirect($this->router->pathFor('home'));
       }
     }
-    file_put_contents('php://stderr', PHP_EOL . print_r($_SESSION, TRUE). PHP_EOL, FILE_APPEND);
+    //file_put_contents('php://stderr', PHP_EOL . print_r($_SESSION, TRUE). PHP_EOL, FILE_APPEND);
     echo json_encode($salida, JSON_UNESCAPED_UNICODE);
     //return $response->withRedirect($this->router->pathFor('dashboard'));
   }
