@@ -28,7 +28,8 @@ $app->group('', function(){
   $this->get('/Dashboard/MantenedorUsuarios/Agregar', 'UsuarioController:create')->setName('agregarUsuarios');
   $this->post('/Dashboard/MantenedorUsuarios', 'UsuarioController:store');
   $this->delete('/Dashboard/MantenedorUsuarios', 'UsuarioController:delete');
+  $this->get('/Dashboard/MantenedorUsuarios/Editar', 'UsuarioController:update')->setName('editarUsuarios');
 
   $this->get('/Dashboard/MantenedorUsuarios/Info', 'DashboardController:getInfoUsuarios')->setName('infoUsuarios');
-  $this->get('/Dashboard/MantenedorUsuarios/Editar', 'DashboardController:getEditarUsuarios')->setName('editarUsuarios');
+
 })->add(new AuthMiddleware($container));

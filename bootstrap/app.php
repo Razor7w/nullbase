@@ -87,6 +87,9 @@ $container['load'] = function ($container){
 $container['uri'] = function ($container){
   return new App\Libs\Uri;
 };
+$container['seguridad'] = function ($container){
+  return new App\Libs\Seguridad;
+};
 
 $app->add(new \App\Middleware\ValidationErrorsMiddleware($container));
 //$app->add(new \App\Middleware\OldInputMiddleware($container));

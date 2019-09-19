@@ -38,13 +38,15 @@ class Auth extends Controller{
     }
 
     $user = DAOUser::getData($email);
-
-    if (password_verify($password, $user[0]->gl_password)) {
-      $this->session->setSession('id_usuario', $user[0]->id);
-      $this->session->setSession('gl_nombre', $user[0]->gl_nombre);
-      $this->session->setSession('id_perfil', $user[0]->id_perfil);
-      $this->session->setSession('gl_nombre_perfil', $user[0]->gl_nombre_perfil);
-      $this->session->setSession('id_usuario_perfil', $user[0]->id_usuario_perfil);
+    //file_put_contents('php://stderr', PHP_EOL . print_r($user, TRUE). PHP_EOL, FILE_APPEND);
+    if (password_verify($password, $user->gl_password)) {
+      $this->session->setSession('id_usuario', $user->id);
+      $this->session->setSession('gl_nombre', $user->gl_nombre);
+      $this->session->setSession('id_perfil', $user->id_perfil);
+      $this->session->setSession('id_local', $user->id_local);
+      $this->session->setSession('gl_nombre_perfil', $user->gl_nombre_perfil);
+      $this->session->setSession('gl_nombre_local', $user->gl_nombre_local);
+      $this->session->setSession('gl_token', $user->gl_token);
       return true;
     }
 

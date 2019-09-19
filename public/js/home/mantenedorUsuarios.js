@@ -113,6 +113,9 @@ MantenedorUsuarios = {
         }
     });
 
+  },
+  editar : function(btn){
+
   }
 
 

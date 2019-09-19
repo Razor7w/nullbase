@@ -1,1 +1,30 @@
-editar Usuarios
+<form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="gl_nombre">Nombre</label>
+      <input type="text" class="form-control" id="gl_nombre" placeholder="Nombre">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="gl_email">Email</label>
+      <input type="email" class="form-control" id="gl_email" placeholder="Email">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="gl_password">Contraseña</label>
+      <input type="password" class="form-control" id="gl_password" placeholder="Contraseña">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="gl_tipo_usuario">Perfil</label>
+      <select id="gl_tipo_usuario" class="form-control">
+        <option value="0">Elige un Perfil...</option>
+      </select>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="gl_locales">Locales</label>
+      <select id="gl_locales" class="form-control">
+        <option value="0">Elige un local...</option>
+      </select>
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-primary float-right" onclick="MantenedorUsuarios.editar(this);">Editar Usuario</button>
+</form>

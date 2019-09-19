@@ -56,18 +56,24 @@ class UsuarioController extends Controller{
                                             "errorLocal"       => isset($errors['local'][0]) ? $errors['local'][0] : "",
                                             "errorTipoUsuario" => isset($errors['tipo_usuario'][0]) ? $errors['tipo_usuario'][0] : "");
     }else{
+
+      $passHash = password_hash($params['password'], PASSWORD_DEFAULT);
+      
       $user = new DAOUser;
+      $user->id_perfil   = $params['tipo_usuario'];
+      $user->id_local    = $params['local'];
       $user->gl_nombre   = $params['nombre'];
       $user->gl_email    = $params['email'];
-      $user->gl_password = password_hash($params['password'], PASSWORD_DEFAULT);
-      $user->id_local    = $params['local'];
+      $user->gl_password = $passHash;
+      $user->gl_token    = $this->seguridad->generaTokenUsuario($passHash);
+
       $user->save();
 
-      $userPerfil = new DAOUsuarioPerfil;
-      $userPerfil->id_usuario   = $user->id;
-      $userPerfil->id_perfil    = $params['tipo_usuario'];
-      $userPerfil->bo_principal = $params['tipo_usuario'];
-      $userPerfil->save();
+      // $userPerfil = new DAOUsuarioPerfil;
+      // $userPerfil->id_usuario   = $user->id;
+      // $userPerfil->id_perfil    = $params['tipo_usuario'];
+      // $userPerfil->bo_principal = $params['tipo_usuario'];
+      // $userPerfil->save();
 
       $salida = array("correcto" => true);
     }
@@ -90,5 +96,12 @@ class UsuarioController extends Controller{
 
     echo json_encode($salida, JSON_UNESCAPED_UNICODE);
 
+  }
+  public function update($request, $response){
+    $id = $request->getParam('id');
+    $user = DAOUser::where('id', $id)->first();
+    //file_put_contents('php://stderr', PHP_EOL . print_r($user->gl_nombre, TRUE). PHP_EOL, FILE_APPEND);
+    //file_put_contents('php://stderr', PHP_EOL . print_r($user->gl_email, TRUE). PHP_EOL, FILE_APPEND);
+    return $this->view->render($response, 'templates/panel/usuarios/editar.html');
   }
 }

@@ -13,11 +13,8 @@ class DashboardController extends Controller{
   }
   public function getInfoUsuarios($request, $response){
     $params = $request->getParams();
-    file_put_contents('php://stderr', PHP_EOL . print_r($params, TRUE). PHP_EOL, FILE_APPEND);
+    //file_put_contents('php://stderr', PHP_EOL . print_r($params, TRUE). PHP_EOL, FILE_APPEND);
     return $this->view->render($response, 'templates/panel/usuarios/info.html');
-  }
-  public function getEditarUsuarios($request, $response){
-    return $this->view->render($response, 'templates/panel/usuarios/editar.html');
   }
   public function getMantenedorProductos($request, $response){
     return $this->view->render($response, 'templates/panel/mantenedorProductos.html');
