@@ -10,7 +10,7 @@ MantenedorUsuarios = {
     });
     console.log("Cargue el MantenedorUsuarios.js");
   },
-  eliminar: function(id){
+  eliminar: function(token){
     iziToast.question({
     timeout: 5000,
     close: false,
@@ -32,12 +32,12 @@ MantenedorUsuarios = {
     onClosing: function(instance, toast, closedBy){
         //console.info('Closing | closedBy: ' + closedBy);
         if (closedBy === 'buttonYES') {
-            console.log('Eliminar al usuario ' + id);
+            console.log('Eliminar al usuario ' + token);
             $.ajax({
                 dataType: "json",
                 cache: false,
                 async: true,
-                data: {id: id},
+                data: {token: token},
                 type: "DELETE",
                 url:  Base.getBaseUri() ,
                 error: function (xhr, textStatus, errorThrown) {

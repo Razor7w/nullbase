@@ -58,7 +58,7 @@ class UsuarioController extends Controller{
     }else{
 
       $passHash = password_hash($params['password'], PASSWORD_DEFAULT);
-      
+
       $user = new DAOUser;
       $user->id_perfil   = $params['tipo_usuario'];
       $user->id_local    = $params['local'];
@@ -84,9 +84,9 @@ class UsuarioController extends Controller{
 
   public function delete($request, $response){
     //Más que un delete, es un update para no mostrarlo.
-    $id = $request->getParam('id');
+    $token = $request->getParam('token');
 
-    $affected = DAOUser::where('id', $id)
+    $affected = DAOUser::where('gl_token', $token)
                         ->update(['bo_activo' => 0]);
     if ($affected == 1) {
       $salida = array("correcto" => true);

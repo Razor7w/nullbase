@@ -37,16 +37,16 @@
             <td> {{ array.gl_email|e }}</td>
             <td>
               <button type="button" rel="tooltip" title="Info Usuario" class="btn btn-info btn-circle btn-sm"
-                onclick="xModal.open('MantenedorUsuarios/Info?id={{array.id}}', 'Info Usuario', 'lg');">
+                onclick="xModal.open('MantenedorUsuarios/Info?gl_token={{array.gl_token}}', 'Info Usuario', 'lg');">
                 <i class="fas fa-info-circle"></i>
               </button>
               <button type="button" rel="tooltip" title="Editar Usuario" class="btn btn-success btn-circle btn-sm"
-                onclick="xModal.open('MantenedorUsuarios/Editar?id={{array.id}}', 'Editar Usuario', 'lg');">
+                onclick="xModal.open('MantenedorUsuarios/Editar?gl_token={{array.gl_token}}', 'Editar Usuario', 'lg');">
                 <i class="fas fa-pencil-alt"></i>
               </button>
               {% if (array.id == id_usuario) == false  %}
               <button type="button" rel="tooltip" title="Eliminar Usuario" class="btn btn-danger btn-circle btn-sm"
-                onclick="MantenedorUsuarios.eliminar({{array.id}});">
+                onclick="MantenedorUsuarios.eliminar('{{array.gl_token}}');">
                 <i class="fas fa-trash"></i>
               </button>
               {% endif %}
