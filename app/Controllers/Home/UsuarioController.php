@@ -98,10 +98,20 @@ class UsuarioController extends Controller{
 
   }
   public function update($request, $response){
-    $id = $request->getParam('id');
-    $user = DAOUser::where('id', $id)->first();
-    //file_put_contents('php://stderr', PHP_EOL . print_r($user->gl_nombre, TRUE). PHP_EOL, FILE_APPEND);
-    //file_put_contents('php://stderr', PHP_EOL . print_r($user->gl_email, TRUE). PHP_EOL, FILE_APPEND);
+    $token = $request->getParam('gl_token');
+    $user = DAOUser::where('gl_token', $token)->first();
+
+    $locales = DAOLocal::get();
+    $perfiles = DAOPerfil::get();
+
+    $this->view->getEnvironment()->addGlobal('locales', $locales);
+    $this->view->getEnvironment()->addGlobal('perfiles', $perfiles);
+
+    $this->view->getEnvironment()->addGlobal('nombre', $user->gl_nombre);
+    $this->view->getEnvironment()->addGlobal('email', $user->gl_email);
+    $this->view->getEnvironment()->addGlobal('id_local', $user->id_local);
+    $this->view->getEnvironment()->addGlobal('id_perfil', $user->id_perfil);
+    //file_put_contents('php://stderr', PHP_EOL . print_r($user, TRUE). PHP_EOL, FILE_APPEND);
     return $this->view->render($response, 'templates/panel/usuarios/editar.html');
   }
 }
